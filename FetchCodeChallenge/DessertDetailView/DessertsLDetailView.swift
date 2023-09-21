@@ -59,8 +59,6 @@ struct DessertsDetailView<ViewModel: DessertsDetailViewModelProtocol>: View {
         }.onAppear {
             viewModel.retrieveDesserts()
         }
-        
-        
         return recipeFound
     }
 }
