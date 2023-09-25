@@ -14,51 +14,60 @@ struct DessertsDetailView<ViewModel: DessertsDetailViewModelProtocol>: View {
     
     @ObservedObject var viewModel: ViewModel
     @Environment(\.presentationMode) var presentationMode
-    
-    let minimumRowHeight: CGFloat = 50
-    
-    
+        
     var body: some View {
         UITableView.appearance().backgroundColor = .clear
-        
-        let errorView: some View = ZStack {
-            VStack(spacing: 25) {
-                Image(systemName: "questionmark.diamond.fill")
-                    .font(.system(size: 60))
-                Text("Something went wrong")
-                    .font(.largeTitle)
-            }
-        }
         let recipeFound: some View = ZStack {
             ScrollView {
                 VStack(alignment: .leading, spacing: 10) {
-                    Text(viewModel.name)
-                        .font(.largeTitle)
-                    Text("Instrucctions")
-                        .font(.title)
-                    Text(viewModel.instruccions)
-                    Text("Ingredients")
-                        .font(.title)
-                    List(viewModel.ingredients) { ingredient in
-                        HStack {
-                            Text(ingredient.ingredient)
-                            Spacer()
-                            Text(ingredient.quantity)
-                        }
-                    }
-                    .disabled(true)
-                    .border(.gray)
-                    .frame(height: minimumRowHeight * CGFloat(viewModel.ingredients.count))
+                    titleView
+                    ingredientsView
+                    instrucctionsView
                 }.padding()
             }.alert(isPresented: $viewModel.showAlertError) {
-                Alert(title: Text("Something went wrong"), message: Text("The information you requested is not available"), dismissButton: .default(Text("OK"), action: {
-                    self.presentationMode.wrappedValue.dismiss()
-                }))
-                
+                alertView
             }
         }.onAppear {
             viewModel.retrieveDesserts()
         }
         return recipeFound
+    }
+    
+    private var ingredientsView: some View {
+        VStack(alignment: .leading) {
+            Text(DessertDetailConstants.Localizables.ingredientsTitle)
+                .font(.title)
+            List(viewModel.ingredients) { ingredient in
+                HStack {
+                    Text(ingredient.ingredient)
+                    Spacer()
+                    Text(ingredient.quantity)
+                }
+            }
+            .disabled(true)
+            .border(.gray)
+            .frame(height: DessertDetailConstants.Constants.minimumRowHeight * CGFloat(viewModel.ingredients.count))
+        }
+    }
+    
+    private var alertView: Alert {
+        Alert(title: Text(DessertDetailConstants.Localizables.alertHeader),
+              message: Text(DessertDetailConstants.Localizables.alertDetails),
+              dismissButton: .default(Text(DessertDetailConstants.Localizables.alertDismissButton), action: {
+            self.presentationMode.wrappedValue.dismiss()
+        }))
+    }
+    
+    private var instrucctionsView: some View {
+        VStack(alignment: .leading) {
+            Text(DessertDetailConstants.Localizables.instrucctionsTitle)
+                .font(.title)
+            Text(viewModel.instruccions)
+        }
+    }
+    
+    private var titleView: some View {
+        Text(viewModel.name)
+            .font(.largeTitle)
     }
 }

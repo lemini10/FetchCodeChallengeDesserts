@@ -16,6 +16,8 @@
 		A84DDDDB2AB8B20A005E00BF /* DessertsApiDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84DDDDA2AB8B20A005E00BF /* DessertsApiDataManager.swift */; };
 		A84DDDDD2ABB3E2B005E00BF /* DessertsDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84DDDDC2ABB3E2A005E00BF /* DessertsDetailViewModel.swift */; };
 		A84DDDE12ABB3F51005E00BF /* DessertDetailApiDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84DDDE02ABB3F51005E00BF /* DessertDetailApiDataManager.swift */; };
+		A8EB12C52AC10A4E007413BE /* DessertDetailEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8EB12C42AC10A4E007413BE /* DessertDetailEntities.swift */; };
+		A8EB12C72AC10A97007413BE /* DessertDetailConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8EB12C62AC10A97007413BE /* DessertDetailConstants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +31,8 @@
 		A84DDDDA2AB8B20A005E00BF /* DessertsApiDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DessertsApiDataManager.swift; sourceTree = "<group>"; };
 		A84DDDDC2ABB3E2A005E00BF /* DessertsDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DessertsDetailViewModel.swift; sourceTree = "<group>"; };
 		A84DDDE02ABB3F51005E00BF /* DessertDetailApiDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DessertDetailApiDataManager.swift; sourceTree = "<group>"; };
+		A8EB12C42AC10A4E007413BE /* DessertDetailEntities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DessertDetailEntities.swift; sourceTree = "<group>"; };
+		A8EB12C62AC10A97007413BE /* DessertDetailConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DessertDetailConstants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +96,8 @@
 			isa = PBXGroup;
 			children = (
 				A84DDDD62AB8AFDA005E00BF /* DessertsLDetailView.swift */,
+				A8EB12C62AC10A97007413BE /* DessertDetailConstants.swift */,
+				A8EB12C42AC10A4E007413BE /* DessertDetailEntities.swift */,
 				A84DDDDC2ABB3E2A005E00BF /* DessertsDetailViewModel.swift */,
 				A84DDDE02ABB3F51005E00BF /* DessertDetailApiDataManager.swift */,
 			);
@@ -173,7 +179,9 @@
 				A84DDDD72AB8AFDA005E00BF /* DessertsLDetailView.swift in Sources */,
 				A84DDDDB2AB8B20A005E00BF /* DessertsApiDataManager.swift in Sources */,
 				A84DDDC92AB80AF5005E00BF /* FetchCodeChallengeApp.swift in Sources */,
+				A8EB12C72AC10A97007413BE /* DessertDetailConstants.swift in Sources */,
 				A84DDDD92AB8AFE5005E00BF /* DessertsListViewModel.swift in Sources */,
+				A8EB12C52AC10A4E007413BE /* DessertDetailEntities.swift in Sources */,
 				A84DDDE12ABB3F51005E00BF /* DessertDetailApiDataManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

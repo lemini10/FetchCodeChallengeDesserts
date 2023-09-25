@@ -24,8 +24,8 @@ class DessertsDetailViewModel: DessertsDetailViewModelProtocol {
     
     let mealId: String
     
-    @Published var name: String = ""
-    @Published var instruccions: String = ""
+    @Published var name: String = String()
+    @Published var instruccions: String = String()
     @Published var ingredients: [Ingredient] = []
     @Published var showAlertError: Bool = false
     
@@ -42,7 +42,7 @@ class DessertsDetailViewModel: DessertsDetailViewModelProtocol {
                 switch completion {
                 case .finished:
                     break
-                case .failure(let _):
+                case .failure(_):
                     self?.showAlertError = true
                 }
             } receiveValue: { [weak self] fetchedDessert in
@@ -51,9 +51,9 @@ class DessertsDetailViewModel: DessertsDetailViewModelProtocol {
                 guard let allProperties = fetchedDessert.allProperties else { return }
                 var requiredIngredients: [Ingredient] = []
                 for propertie in allProperties {
-                    guard propertie.key.contains("strIngredient") && !propertie.value.isEmpty else { continue }
+                    guard propertie.key.contains(DessertDetailConstants.DecodableConstants.ingredientsKey) && !propertie.value.isEmpty else { continue }
                     let ingredientIndex: String = propertie.key.components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
-                    guard let quantity: String = allProperties["strMeasure\(ingredientIndex)"] else { continue }
+                    guard let quantity: String = allProperties[DessertDetailConstants.DecodableConstants.measureKey + ingredientIndex] else { continue }
                     let ingredient: Ingredient = Ingredient(ingredient: propertie.value, quantity: quantity)
                     requiredIngredients.append(ingredient)
                 }
@@ -68,11 +68,4 @@ extension Encodable {
         guard let data = try? JSONEncoder().encode(self) else { return nil }
         return (try? JSONSerialization.jsonObject(with: data, options: .allowFragments)).flatMap { $0 as? [String: String] }
     }
-}
-
-
-struct Ingredient: Identifiable {
-    let id: UUID = UUID()
-    let ingredient: String
-    let quantity: String
 }
